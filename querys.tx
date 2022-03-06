@@ -1,0 +1,15 @@
+  db.user.insert({
+  "id": "1a1",
+  "user": "anonimus",
+  "Password": "123",
+  "authorId": "1a",
+});
+
+  db.user.authors({
+    "id": "1a",
+    "name":"cristiano",
+    "email": "cr7@gmail.com",
+    "phone": "999999999",
+    "birthday": 570758400000,
+    "userId": "1a1"
+});
