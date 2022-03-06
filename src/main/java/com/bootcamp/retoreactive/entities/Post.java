@@ -22,6 +22,7 @@ public class Post {
     private Date date;
     private String status;
     private String content;
-    private String reactionId;
+    private String blogId;
+    private Reaction reaction;
     private List<Comment> comments;
 }

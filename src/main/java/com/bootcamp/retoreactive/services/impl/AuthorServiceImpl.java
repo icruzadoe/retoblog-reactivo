@@ -17,8 +17,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
     private AuthorRepository authorRepository;
-    @Autowired
-    private UserRepository userRepository;
 
     @Override
     public Mono<Author> findById(String id) {
@@ -46,13 +44,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Mono<Author> saveWithValidation(Author author) {
-
-//        return this.authorRepository.existsByEmail(author.getEmail())
-//                .flatMap(exists->
-//                        {
-//                            return exists ? Mono.empty():this.authorRepository.save(author);
-//                        });
-
         return this.authorRepository.existsByUserId(author.getUserId())
                 .doOnNext(b->{
                     System.out.println("doOnNext author = " + b);
