@@ -8,4 +8,7 @@ import reactor.core.publisher.Mono;
 public interface PostRepository extends ReactiveMongoRepository<Post, String> {
 
     Mono<Post> findByBlogId(String blogId);
+
+    Mono<Post> deleteByBlogId(String id);
+
 }

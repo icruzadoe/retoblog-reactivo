@@ -14,4 +14,8 @@ public interface AuthorRepository extends ReactiveMongoRepository<Author,String>
     Flux<Author> findByName(String name);
 
     Mono<Boolean> existsByUserId(String userId);
+
+    Mono<Void> deleteByUserId(String id);
+
+    Mono<Author> findByUserId(String id);
 }

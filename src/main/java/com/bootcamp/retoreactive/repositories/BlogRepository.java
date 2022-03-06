@@ -18,4 +18,6 @@ public interface BlogRepository extends ReactiveMongoRepository<Blog, String> {
     Mono<Long> findBlogCountByAuthor(String authorId);
 
     Flux<Blog> findByAuthorId(String authorId);
+
+    Mono<Void> deleteByAuthorId(String authorId);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.web.reactive.function.server.ServerResponse.badRequest;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 @Component
@@ -30,8 +31,11 @@ public class UserHandler {
 
     public Mono<ServerResponse> delete(ServerRequest serverRequest) {
         String userId = serverRequest.pathVariable("id");
+        if (!isValidId(userId)) return badRequest().build();
 
         return this.userService.delete(serverRequest.pathVariable("id"))
                 .then(ServerResponse.ok().build());
     }
+
+    public boolean isValidId(String id) { return id != null;}
 }
