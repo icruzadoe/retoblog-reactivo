@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono;
 public interface PostService {
     Mono<Post> save(Post post);
     Flux<Post> findAll();
+    Mono<Post> deleteReaction(String userId);
 }

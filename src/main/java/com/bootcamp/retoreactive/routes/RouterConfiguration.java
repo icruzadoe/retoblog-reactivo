@@ -48,6 +48,7 @@ public class RouterConfiguration {
         return RouterFunctions.nest(RequestPredicates.path("/posts"),
                 RouterFunctions.route(GET(""), postHandler::findAll)
                 .andRoute(POST("").and(accept(APPLICATION_JSON)),postHandler::save)
+                        .andRoute(PUT("/delete-reaction/{id}"),postHandler::deleteReaction)
                 );
     }
 

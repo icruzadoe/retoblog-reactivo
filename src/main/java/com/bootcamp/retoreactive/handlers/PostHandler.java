@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.web.reactive.function.server.ServerResponse.badRequest;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 @Component
@@ -28,4 +29,14 @@ public class PostHandler {
         return ok().contentType(APPLICATION_JSON)
                 .body(postService.findAll(), Post.class);
     }
+
+    public Mono<ServerResponse> deleteReaction(ServerRequest serverRequest) {
+        String userId = serverRequest.pathVariable("id");
+        if (!isValidId(userId)) return badRequest().build();
+
+        return this.postService.deleteReaction(serverRequest.pathVariable("id"))
+                .then(ServerResponse.noContent().build());
+    }
+
+    public boolean isValidId(String id) { return id != null;}
 }

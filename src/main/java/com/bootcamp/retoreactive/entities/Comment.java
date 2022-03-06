@@ -20,4 +20,5 @@ public class Comment {
     private String name;
     private String status;
     private String comment;
+    private String userId;
 }
